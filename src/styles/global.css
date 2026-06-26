@@ -1789,16 +1789,6 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Contain table within card on mobile */
-@media (max-width: 767px) {
-  .card-body {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 !important;
-    overflow: hidden;
-  }
-}
-
 /* Ensure all divs respect viewport */
 div {
   max-width: 100%;
@@ -1808,80 +1798,69 @@ div {
 /* Modal must fit in viewport */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
   overflow-x: hidden;
 }
 
-/* Responsive table layout for mobile */
+/* ─── Mobile tables: each row becomes a stacked card ─── */
 @media (max-width: 767px) {
-  .gov-table {
-    display: table;
+  .card-body {
     width: 100%;
-    max-width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    background: white;
+    padding: var(--p-md) !important;
+    overflow: visible;
+  }
+
+  .gov-table {
+    display: block;
+    width: 100%;
+    border: none;
   }
 
   .gov-table thead {
-    background: var(--gov-green);
+    display: none;
   }
 
-  .gov-table thead th {
-    background: var(--gov-green);
-    color: white;
-    padding: 6px 8px !important;
-    font-size: 10px !important;
-    font-weight: 700;
-    text-align: left;
-    border: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .gov-table tbody {
+    display: block;
+    width: 100%;
   }
 
-  .gov-table tbody tr {
-    border-bottom: 1px solid var(--gray-200);
+  .gov-table tr {
+    display: block;
+    width: 100%;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  /* Expanded rows inside stations */
+  .gov-table tr.expanded {
+    background: #f8f9fb;
   }
 
   .gov-table td {
-    padding: 6px 8px !important;
-    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0 !important;
     border: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-break: break-word;
-    vertical-align: middle;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 12px;
+    width: 100%;
+    gap: 8px;
   }
 
-  .gov-table td:first-child {
-    font-weight: 700;
+  .gov-table td:last-child {
+    border-bottom: none;
   }
 
-  /* Pipeline table: Stage, Name, Status only (hide col 3,4,6) */
-  .gov-table th:nth-child(3),
-  .gov-table td:nth-child(3),
-  .gov-table th:nth-child(4),
-  .gov-table td:nth-child(4),
-  .gov-table th:nth-child(6),
-  .gov-table td:nth-child(6) {
-    display: none;
-  }
-
-  /* Stations table: also hide col 7,8,9 (Last Supply, Hoarding, Anomaly) */
-  .gov-table th:nth-child(7),
-  .gov-table td:nth-child(7),
-  .gov-table th:nth-child(8),
-  .gov-table td:nth-child(8),
-  .gov-table th:nth-child(9),
-  .gov-table td:nth-child(9) {
-    display: none;
+  .gov-table td[colspan] {
+    display: block;
+    overflow-x: auto;
   }
 }
 
