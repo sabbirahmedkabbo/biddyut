@@ -17,8 +17,8 @@ function AppLayout({ children }) {
       <div className="app-body">
         <Sidebar />
         {children}
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }
@@ -39,43 +39,23 @@ export default function App() {
         />
         <Route
           path="/pipeline"
-          element={
-            <AppLayout>
-              <Pipeline />
-            </AppLayout>
-          }
+          element={<AppLayout><Pipeline /></AppLayout>}
         />
         <Route
           path="/alerts"
-          element={
-            <AppLayout>
-              <Alerts />
-            </AppLayout>
-          }
+          element={<AppLayout><Alerts /></AppLayout>}
         />
         <Route
           path="/prices"
-          element={
-            <AppLayout>
-              <Prices />
-            </AppLayout>
-          }
+          element={<AppLayout><Prices /></AppLayout>}
         />
         <Route
           path="/stations"
-          element={
-            <AppLayout>
-              <Stations />
-            </AppLayout>
-          }
+          element={<AppLayout><Stations /></AppLayout>}
         />
         <Route
           path="/reserves"
-          element={
-            <AppLayout>
-              <Reserves />
-            </AppLayout>
-          }
+          element={<AppLayout><Reserves /></AppLayout>}
         />
       </Routes>
     </BrowserRouter>

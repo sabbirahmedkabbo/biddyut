@@ -460,6 +460,9 @@ body {
   font-weight: 700;
   color: var(--gov-green);
   margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .page-header .bn {
@@ -1704,21 +1707,31 @@ body {
   margin: var(--p-md);
 }
 
-/* Fix pipeline container on mobile */
+/* Pipeline: stack vertically on mobile, no overflow */
 @media (max-width: 767px) {
   .pipeline-container {
     padding: var(--p-md) 0;
+    overflow: hidden;
+    width: 100%;
   }
-  
+
   .pipeline-flow {
-    min-width: auto;
-    padding: 0 var(--p-sm);
-    overflow-x: auto;
+    flex-direction: column;
+    min-width: unset;
+    width: 100%;
+    padding: 0;
+    gap: 0;
+    align-items: stretch;
   }
-  
+
   .pipeline-stage {
-    min-width: 80px;
-    padding: var(--p-sm);
+    width: 100%;
+    min-width: unset;
+    padding: var(--p-md);
+  }
+
+  .pipeline-arrow {
+    display: none;
   }
 }
 
