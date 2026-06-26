@@ -8,11 +8,11 @@ const STATUSES = ['All','operational','warning','critical'];
 function StockBar({pct}) {
   const color = pct > 60 ? '#22c55e' : pct > 30 ? '#f59e0b' : '#F42A41';
   return (
-    <div style={{display:'flex',alignItems:'center',gap:"clamp(8px, 2vw, 12px)"}}>
-      <div style={{width:"clamp(50px, 15vw, 80px)",background:'#e5e7eb',height:6,flexShrink:0}}>
+    <div style={{display:'inline-flex',alignItems:'center',gap:6}}>
+      <div style={{width:60,background:'#e5e7eb',height:6,flexShrink:0}}>
         <div style={{width:`${pct}%`,height:'100%',background:color}} />
       </div>
-      <span className={pct>60?'stock-high':pct>30?'stock-med':'stock-low'} style={{fontSize:"clamp(10px, 2vw, 11px)"}}>{pct}%</span>
+      <span className={pct>60?'stock-high':pct>30?'stock-med':'stock-low'} style={{fontSize:11}}>{pct}%</span>
     </div>
   );
 }

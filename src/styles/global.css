@@ -1833,34 +1833,38 @@ div {
     border: 1px solid var(--gray-200);
     border-radius: 4px;
     margin-bottom: 10px;
-    padding: 10px 12px;
+    padding: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
 
-  /* Expanded rows inside stations */
-  .gov-table tr.expanded {
-    background: #f8f9fb;
-  }
-
-  .gov-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0 !important;
-    border: none;
-    border-bottom: 1px solid #f1f5f9;
-    font-size: 12px;
+  /* First cell = card title (ID / Stage / Country) */
+  .gov-table td:first-child {
+    display: block;
     width: 100%;
-    gap: 8px;
+    color: var(--gov-green);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 0 0 8px 0 !important;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--gray-200);
+    border-top: none;
   }
 
-  .gov-table td:last-child {
-    border-bottom: none;
+  /* All other cells: plain left-aligned block */
+  .gov-table td {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 3px 0 !important;
+    border: none;
+    font-size: 12px;
+    color: var(--text-primary);
+    line-height: 1.5;
   }
 
   .gov-table td[colspan] {
     display: block;
-    overflow-x: auto;
+    width: 100%;
   }
 }
 
