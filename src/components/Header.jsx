@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import emblemImage from '../assets/emblem.svg';
 
 export default function Header() {
   const [time, setTime] = useState(new Date());
@@ -28,7 +29,7 @@ export default function Header() {
     <header className="header">
       <img
         className="header-emblem"
-        src="/emblem.svg"
+        src={emblemImage}
         alt="Emblem of Bangladesh"
       />
       <div className="header-title">
@@ -40,6 +41,7 @@ export default function Header() {
         className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Toggle navigation"
+        type="button"
       >
         <span></span>
         <span></span>

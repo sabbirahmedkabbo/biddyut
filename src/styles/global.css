@@ -99,13 +99,15 @@ body {
 .app-body {
   display: flex;
   flex: 1;
-  padding-top: var(--header-height);
+  padding-top: clamp(70px, 15vw, 72px);
+  margin-top: 0;
 }
 
 .main-content {
   flex: 1;
   margin-left: 0;
-  min-height: calc(100vh - var(--header-height));
+  margin-top: 0;
+  min-height: calc(100vh - clamp(70px, 15vw, 72px));
   padding: var(--p-md);
   background: var(--off-white);
 }
@@ -122,33 +124,36 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  height: var(--header-height);
+  z-index: 1100;
+  height: auto;
+  min-height: 70px;
   background: var(--gov-green);
   display: flex;
   align-items: center;
-  padding: 0 var(--p-md);
+  justify-content: space-between;
+  padding: var(--p-md);
   gap: var(--gap-md);
   border-bottom: 3px solid var(--gov-gold);
   box-shadow: var(--shadow-md);
-  min-height: 70px;
   width: 100%;
   flex-wrap: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
   .header {
     padding: 0 var(--p-lg);
     gap: var(--gap-lg);
+    min-height: 72px;
   }
 }
 
 .header-emblem {
-  width: clamp(40px, 8vw, 50px);
-  height: clamp(40px, 8vw, 50px);
+  width: clamp(40px, 10vw, 50px);
+  height: clamp(40px, 10vw, 50px);
   flex-shrink: 0;
   display: block;
+  object-fit: contain;
 }
 
 .header-title {
@@ -157,14 +162,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: var(--p-xs);
 }
 
 .header-title h1 {
-  font-size: clamp(16px, 5vw, 22px);
+  font-size: clamp(16px, 6vw, 24px);
   font-weight: 900;
   color: var(--white);
   letter-spacing: 0.5px;
-  line-height: 1.2;
+  line-height: 1.1;
   margin: 0;
   padding: 0;
   font-family: var(--font-bn);
@@ -174,18 +180,20 @@ body {
 }
 
 .header-title p {
-  font-size: clamp(9px, 2.5vw, 11px);
+  font-size: clamp(8px, 2vw, 11px);
   color: var(--gov-gold-light);
-  margin-top: var(--p-xs);
+  margin: 0;
+  padding: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .header-subtitle {
-  font-size: clamp(8px, 2vw, 10px);
+  font-size: clamp(7px, 1.5vw, 9px);
   color: rgba(255,255,255,0.7);
-  margin-top: var(--p-xs);
+  margin: 0;
+  padding: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -226,31 +234,38 @@ body {
 .header-clock .tz {
   font-size: clamp(7px, 1.5vw, 9px);
   color: rgba(255,255,255,0.6);
+  margin: 0;
+  padding: 0;
 }
 
 .hamburger {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
-  gap: clamp(3px, 1vw, 5px);
+  gap: clamp(2px, 1vw, 4px);
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 1001;
+  padding: var(--p-xs);
+  margin: 0;
+  z-index: 1101;
+  width: auto;
+  height: auto;
+  flex-shrink: 0;
 }
 
 @media (min-width: 1000px) {
   .hamburger {
-    display: none;
+    display: none !important;
   }
 }
 
 .hamburger span {
-  width: clamp(20px, 5vw, 28px);
+  width: clamp(20px, 6vw, 28px);
   height: 2px;
   background: white;
   transition: all 0.3s ease;
   display: block;
+  flex-shrink: 0;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -270,17 +285,18 @@ body {
   flex-direction: column;
   gap: 0;
   position: fixed;
-  top: var(--header-height);
+  top: 70px;
   left: 0;
   right: 0;
   background: var(--gov-green);
-  z-index: 999;
-  max-height: calc(100vh - var(--header-height));
+  z-index: 1050;
+  max-height: calc(100vh - 70px);
   overflow-y: auto;
+  width: 100%;
 }
 
 .nav-links.active {
-  display: flex;
+  display: flex !important;
 }
 
 @media (min-width: 1000px) {
@@ -292,6 +308,10 @@ body {
     background: transparent;
     max-height: none;
     overflow-y: visible;
+    top: auto;
+    left: auto;
+    right: auto;
+    z-index: auto;
   }
 }
 
