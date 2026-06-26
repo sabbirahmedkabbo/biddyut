@@ -199,7 +199,7 @@ export default function Reserves() {
                 const isWarn = !isCrit && data.currentDays < data.targetDays * 0.6;
                 return (
                   <tr key={fuel}>
-                    <td>
+                    <td data-label="Fuel Type">
                       <div style={{display:'flex',alignItems:'center',gap:"clamp(12px, 3vw, 20px)"}}>
                         <div style={{width:12,height:12,background:FUEL_COLORS[fuel],flexShrink:0}} />
                         <div>
@@ -208,7 +208,7 @@ export default function Reserves() {
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Reserve (Days)">
                       <span style={{
                         fontSize:22,fontWeight:900,fontVariantNumeric:'tabular-nums',
                         color: isCrit?'#F42A41':isWarn?'#f59e0b':'#006A4E'
@@ -216,17 +216,17 @@ export default function Reserves() {
                         {data.currentDays.toFixed(1)}
                       </span>
                     </td>
-                    <td>{data.targetDays}</td>
-                    <td style={{color:'#F42A41',fontWeight:700}}>{data.criticalDays} days</td>
-                    <td style={{fontVariantNumeric:'tabular-nums'}}>{data.currentMT.toLocaleString()}</td>
-                    <td style={{fontVariantNumeric:'tabular-nums'}}>{data.capacityMT.toLocaleString()}</td>
-                    <td>
+                    <td data-label="Target (Days)">{data.targetDays}</td>
+                    <td data-label="Critical Threshold" style={{color:'#F42A41',fontWeight:700}}>{data.criticalDays} days</td>
+                    <td data-label="Current Stock (MT)" style={{fontVariantNumeric:'tabular-nums'}}>{data.currentMT.toLocaleString()}</td>
+                    <td data-label="Capacity (MT)" style={{fontVariantNumeric:'tabular-nums'}}>{data.capacityMT.toLocaleString()}</td>
+                    <td data-label="Utilisation">
                       <div style={{width:80,background:'#e5e7eb',height:6}}>
                         <div style={{width:`${pct}%`,height:'100%',background:FUEL_COLORS[fuel]}} />
                       </div>
                       <div style={{fontSize:9,color:'#6b7685'}}>{pct}%</div>
                     </td>
-                    <td>
+                    <td data-label="Status">
                       <span className={`badge ${isCrit?'badge-critical':isWarn?'badge-warning':'badge-operational'}`}>
                         {isCrit?'CRITICAL':isWarn?'WARNING':'ADEQUATE'}
                       </span>
