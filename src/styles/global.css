@@ -75,6 +75,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -83,6 +85,10 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .bn {
@@ -94,6 +100,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .app-body {
@@ -101,6 +109,9 @@ body {
   flex: 1;
   padding-top: clamp(70px, 15vw, 72px);
   margin-top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .main-content {
@@ -110,6 +121,10 @@ body {
   min-height: calc(100vh - clamp(70px, 15vw, 72px));
   padding: var(--p-md);
   background: var(--off-white);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -470,6 +485,10 @@ body {
   border: 1px solid var(--gray-200);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .card-header {
@@ -477,6 +496,9 @@ body {
   border-bottom: 1px solid var(--gray-100);
   background: var(--gov-green);
   border-radius: var(--radius) var(--radius) 0 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .card-header h3 {
@@ -486,6 +508,8 @@ body {
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .card-header .bn {
@@ -493,10 +517,16 @@ body {
   font-size: clamp(10px, 2.5vw, 12px);
   color: var(--gov-gold-light);
   font-weight: 400;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .card-body {
   padding: var(--p-lg);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .stat-grid {
@@ -1745,6 +1775,38 @@ body {
 /* Fix overflow on all containers */
 [style*="overflow"] {
   -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile table wrapper - ensure tables don't break layout */
+@media (max-width: 767px) {
+  .card-body {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+
+  .gov-table {
+    min-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Ensure all divs respect viewport */
+div {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Modal must fit in viewport */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Ensure proper touch targets on mobile */
