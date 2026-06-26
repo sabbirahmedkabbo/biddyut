@@ -29,9 +29,8 @@ export default function Header() {
         alt="Emblem of Bangladesh"
       />
       <div className="header-title">
-        <h1>Bangladesh Fuel Supply Chain Monitoring System</h1>
-        <p className="bn">বাংলাদেশ জ্বালানি সরবরাহ শৃঙ্খল পর্যবেক্ষণ ব্যবস্থা</p>
-        <p className="header-subtitle">BFSCMS — Ministry of Power, Energy and Mineral Resources</p>
+        <h1 className="bn">জ্বালানি মনিটর</h1>
+        <p className="header-subtitle">Fuel Monitor System — Ministry of Power, Energy &amp; Mineral Resources</p>
       </div>
 
       <nav className="nav-links">
