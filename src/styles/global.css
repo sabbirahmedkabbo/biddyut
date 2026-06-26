@@ -1776,16 +1776,13 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Hide tables on mobile, show cards instead */
+/* Contain table within card on mobile */
 @media (max-width: 767px) {
-  .gov-table {
-    display: none;
-  }
-
   .card-body {
-    overflow-x: visible !important;
     width: 100%;
-    padding: var(--p-md);
+    max-width: 100%;
+    padding: 0 !important;
+    overflow: hidden;
   }
 }
 
@@ -1812,48 +1809,66 @@ div {
   .gov-table {
     display: table;
     width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     background: white;
   }
 
   .gov-table thead {
-    display: table-header-group;
     background: var(--gov-green);
   }
 
   .gov-table thead th {
     background: var(--gov-green);
     color: white;
-    padding: var(--p-sm) !important;
-    font-size: clamp(9px, 2vw, 10px) !important;
+    padding: 6px 8px !important;
+    font-size: 10px !important;
     font-weight: 700;
     text-align: left;
     border: none;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .gov-table tbody {
-    display: table-row-group;
-  }
-
-  .gov-table tr {
-    display: table-row;
+  .gov-table tbody tr {
     border-bottom: 1px solid var(--gray-200);
   }
 
   .gov-table td {
-    display: table-cell;
-    padding: var(--p-sm) !important;
-    font-size: clamp(10px, 2.5vw, 11px);
+    padding: 6px 8px !important;
+    font-size: 11px;
     border: none;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word;
     vertical-align: middle;
   }
 
   .gov-table td:first-child {
     font-weight: 700;
+  }
+
+  /* Pipeline table: Stage, Name, Status only (hide col 3,4,6) */
+  .gov-table th:nth-child(3),
+  .gov-table td:nth-child(3),
+  .gov-table th:nth-child(4),
+  .gov-table td:nth-child(4),
+  .gov-table th:nth-child(6),
+  .gov-table td:nth-child(6) {
+    display: none;
+  }
+
+  /* Stations table: also hide col 7,8,9 (Last Supply, Hoarding, Anomaly) */
+  .gov-table th:nth-child(7),
+  .gov-table td:nth-child(7),
+  .gov-table th:nth-child(8),
+  .gov-table td:nth-child(8),
+  .gov-table th:nth-child(9),
+  .gov-table td:nth-child(9) {
+    display: none;
   }
 }
 
