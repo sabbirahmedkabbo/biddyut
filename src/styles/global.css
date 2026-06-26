@@ -1660,3 +1660,141 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* MOBILE RESPONSIVE FIXES FOR ALL PAGES */
+
+/* Alerts page - stack layout on mobile */
+@media (max-width: 1023px) {
+  [style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Ensure all modals are mobile-safe */
+.modal-box {
+  margin: var(--p-md);
+}
+
+/* Fix pipeline container on mobile */
+@media (max-width: 767px) {
+  .pipeline-container {
+    padding: var(--p-md) 0;
+  }
+  
+  .pipeline-flow {
+    min-width: auto;
+    padding: 0 var(--p-sm);
+    overflow-x: auto;
+  }
+  
+  .pipeline-stage {
+    min-width: 80px;
+    padding: var(--p-sm);
+  }
+}
+
+/* Fix table responsiveness on mobile */
+@media (max-width: 767px) {
+  .gov-table {
+    font-size: clamp(12px, 3vw, 13px);
+  }
+}
+
+/* Fix chart grids on mobile */
+@media (max-width: 1023px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Fix all inputs and buttons on mobile */
+input, textarea, select, button {
+  font-size: clamp(12px, 3vw, 14px);
+  padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
+}
+
+/* Fix filter bar on mobile */
+@media (max-width: 767px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+  
+  .filter-input, .filter-select {
+    width: 100%;
+  }
+}
+
+/* Fix sidebar on mobile for Stations/other pages */
+@media (max-width: 767px) {
+  .sidebar {
+    display: none !important;
+  }
+}
+
+/* Ensure all text is readable */
+body {
+  min-width: 320px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix overflow on all containers */
+[style*="overflow"] {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure proper touch targets on mobile */
+button, a, [role="button"] {
+  min-height: clamp(44px, 10vw, 60px);
+  min-width: clamp(44px, 10vw, 60px);
+}
+
+/* Mobile-safe modal sizing */
+@media (max-width: 767px) {
+  .modal-box {
+    width: 100% !important;
+    max-width: calc(100vw - 2 * var(--p-md)) !important;
+  }
+}
+
+/* Fix live ticker on mobile */
+@media (max-width: 767px) {
+  .ticker-track {
+    gap: var(--gap-lg);
+  }
+  
+  .ticker-item {
+    font-size: clamp(11px, 3vw, 12px);
+  }
+}
+
+/* Ensure proper spacing in all cards */
+.card {
+  margin: 0 0 var(--gap-lg) 0;
+}
+
+/* Fix alignment of stat cards */
+.stat-card {
+  padding: var(--p-lg);
+}
+
+/* Responsive font sizes for all text */
+h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+p, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix long numbers display */
+[style*="fontVariantNumeric"] {
+  word-break: break-all;
+  font-variant-numeric: tabular-nums;
+}

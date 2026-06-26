@@ -34,7 +34,7 @@ function ShockOverlay({ price, onDismiss }) {
     <div className="shock-overlay" onClick={onDismiss}>
       <div className="shock-text">⚠ PRICE SHOCK ALERT ⚠</div>
       <div className="shock-sub">LNG Spot: ${price}/MMBtu — Exceeds ASPS Threshold (${PRICE_SHOCK_THRESHOLD})</div>
-      <div style={{fontSize:14,color:'rgba(255,255,255,0.7)',marginTop:8}}>সতর্কতা: বৈশ্বিক শক্তি মূল্য সীমা অতিক্রম করেছে</div>
+      <div style={{fontSize:14,color:'rgba(255,255,255,0.7)',marginTop:"clamp(12px, 3vw, 20px)"}}>সতর্কতা: বৈশ্বিক শক্তি মূল্য সীমা অতিক্রম করেছে</div>
     </div>
   );
 }
@@ -157,7 +157,7 @@ export default function Prices() {
         </div>
       </div>
 
-      <div className="price-grid" style={{marginBottom:24}}>
+      <div className="price-grid" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         {priceItems.map(p => (
           <div key={p.label} className="price-card">
             <div className="price-commodity">{p.label}</div>
@@ -168,20 +168,20 @@ export default function Prices() {
             <div className={`price-change ${p.trend>=0?'up':'down'}`}>
               {p.trend>=0?'▲':'▼'} {Math.abs(p.trend).toFixed(2)} ({((Math.abs(p.trend)/p.val)*100).toFixed(2)}%)
             </div>
-            <div style={{fontFamily:'var(--font-bn)',fontSize:11,color:'#6b7685',marginTop:4}}>{p.bn}</div>
+            <div style={{fontFamily:'var(--font-bn)',fontSize:11,color:'#6b7685',marginTop:"clamp(12px, 3vw, 20px)"}}>{p.bn}</div>
           </div>
         ))}
       </div>
 
-      <div className="card" style={{marginBottom:24,borderLeft:`4px solid ${gaugeOver?'#F42A41':'#006A4E'}`}}>
+      <div className="card" style={{marginBottom:"clamp(12px, 3vw, 20px)",borderLeft:`4px solid ${gaugeOver?'#F42A41':'#006A4E'}`}}>
         <div className="card-header" style={{background: gaugeOver?'#991b1b':'#006A4E'}}>
           <h3>{gaugeOver?'⚠ PRICE SHOCK DETECTED':'Price Shock Detector · মূল্য ধাক্কা সনাক্তকারী'}</h3>
           <span className="bn">ASPS সীমা: ${PRICE_SHOCK_THRESHOLD}/MMBtu</span>
         </div>
         <div className="card-body">
-          <div style={{display:'flex',alignItems:'center',gap:24}}>
+          <div style={{display:'flex',alignItems:'center',gap:"clamp(12px, 3vw, 20px)"}}>
             <div style={{flex:1}}>
-              <div style={{display:'flex',justifyContent:'space-between',fontSize:11,marginBottom:6}}>
+              <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-between',fontSize:"clamp(10px, 2vw, 11px)",marginBottom:"clamp(12px, 3vw, 20px)",gap:"clamp(8px, 2vw, 12px)"}}>
                 <span>Current LNG Spot: <b>${lngSpot.toFixed(2)}/MMBtu</b></span>
                 <span>ASPS Trigger: <b>${PRICE_SHOCK_THRESHOLD}/MMBtu</b></span>
               </div>
@@ -195,19 +195,19 @@ export default function Prices() {
                   position:'absolute',left:`${(PRICE_SHOCK_THRESHOLD/(PRICE_SHOCK_THRESHOLD*1.8))*100}%`,
                   top:0,bottom:0,width:2,background:'#1a2130',
                 }}>
-                  <div style={{position:'absolute',top:'100%',left:-20,fontSize:9,whiteSpace:'nowrap',color:'#6b7685',marginTop:2}}>THRESHOLD</div>
+                  <div style={{position:'absolute',top:'100%',left:-20,fontSize:9,whiteSpace:'nowrap',color:'#6b7685',marginTop:"clamp(12px, 3vw, 20px)"}}>THRESHOLD</div>
                 </div>
               </div>
-              <div style={{fontSize:11,color:'#6b7685',marginTop:6}}>
+              <div style={{fontSize:"clamp(10px, 2vw, 11px)",color:'#6b7685',marginTop:"clamp(12px, 3vw, 20px)"}}>
                 Global Energy Price Index: <b style={{color:gaugeOver?'#F42A41':'#006A4E'}}>{gaugeShockPct.toFixed(1)}%</b> of maximum tracked range
-                {gaugeOver && <span style={{color:'#F42A41',fontWeight:700,marginLeft:12}}>⚠ ABOVE ASPS TRIGGER THRESHOLD</span>}
+                {gaugeOver && <span style={{color:'#F42A41',fontWeight:700,marginLeft:"clamp(8px, 2vw, 12px)",display:'block',marginTop:"clamp(8px, 2vw, 12px)"}}>⚠ ABOVE ASPS TRIGGER THRESHOLD</span>}
               </div>
             </div>
-            <div style={{textAlign:'center',minWidth:100}}>
-              <div style={{fontSize:36,fontWeight:900,color:gaugeOver?'#F42A41':'#006A4E'}}>
+            <div style={{textAlign:'center',minWidth:"clamp(80px, 20vw, 100px)"}}>
+              <div style={{fontSize:"clamp(24px, 6vw, 36px)",fontWeight:900,color:gaugeOver?'#F42A41':'#006A4E'}}>
                 {gaugeOver ? '🔴' : gaugeShockPct>70 ? '🟡' : '🟢'}
               </div>
-              <div style={{fontSize:11,fontWeight:700,color:gaugeOver?'#F42A41':'#006A4E'}}>
+              <div style={{fontSize:"clamp(10px, 2vw, 11px)",fontWeight:700,color:gaugeOver?'#F42A41':'#006A4E'}}>
                 {gaugeOver?'SHOCK':'NORMAL'}
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function Prices() {
         </div>
       </div>
 
-      <div className="chart-grid" style={{marginBottom:24}}>
+      <div className="chart-grid" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         <div className="card">
           <div className="card-header">
             <h3>LNG Spot vs Contract Price — 12 Months</h3>
@@ -242,7 +242,7 @@ export default function Prices() {
           <h3>Regional Price Comparison · আঞ্চলিক মূল্য তুলনা</h3>
           <span className="bn">বাংলাদেশ বনাম প্রতিবেশী দেশ</span>
         </div>
-        <div className="card-body" style={{padding:0}}>
+        <div className="card-body" style={{padding:"clamp(12px, 3vw, 20px)"}}>
           <table className="gov-table">
             <thead>
               <tr>

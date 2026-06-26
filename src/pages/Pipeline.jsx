@@ -16,58 +16,58 @@ function StageModal({ stage, onClose }) {
           <button className="modal-close" onClick={onClose}>×</button>
         </div>
         <div className="modal-body">
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24,marginBottom:24}}>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(150px, 1fr))',gap:"clamp(12px, 3vw, 20px)",marginBottom:"clamp(12px, 3vw, 20px)"}}>
             <div>
-              <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:8,textTransform:'uppercase',letterSpacing:0.5}}>Current Volume</div>
-              <div style={{fontSize:36,fontWeight:900,color:'#1a2130',marginBottom:4}}>{stage.volumeToday.toLocaleString()}</div>
+              <div style={{fontSize:"clamp(10px, 2vw, 11px)",fontWeight:700,color:'#006A4E',marginBottom:"clamp(12px, 3vw, 20px)",textTransform:'uppercase',letterSpacing:0.5}}>Current Volume</div>
+              <div style={{fontSize:36,fontWeight:900,color:'#1a2130',marginBottom:"clamp(12px, 3vw, 20px)"}}>{stage.volumeToday.toLocaleString()}</div>
               <div style={{fontSize:11,color:'#6b7685'}}>
                 of {stage.capacity.toLocaleString()} {stage.unit} capacity
                 <br/>({Math.round((stage.volumeToday/stage.capacity)*100)}%)
               </div>
             </div>
             <div>
-              <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:8,textTransform:'uppercase',letterSpacing:0.5}}>Flow Rate</div>
-              <div style={{fontSize:36,fontWeight:900,color:'#1a2130',marginBottom:4}}>{stage.flowRate.toLocaleString()}</div>
+              <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:"clamp(12px, 3vw, 20px)",textTransform:'uppercase',letterSpacing:0.5}}>Flow Rate</div>
+              <div style={{fontSize:36,fontWeight:900,color:'#1a2130',marginBottom:"clamp(12px, 3vw, 20px)"}}>{stage.flowRate.toLocaleString()}</div>
               <div style={{fontSize:11,color:'#6b7685'}}>MT per hour</div>
             </div>
           </div>
 
-          <div style={{background:'#f8f9fb',padding:12,marginBottom:16}}>
-            <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:8}}>24-Hour Volume Trend</div>
+          <div style={{background:'#f8f9fb',padding:"clamp(12px, 3vw, 20px)",marginBottom:"clamp(12px, 3vw, 20px)"}}>
+            <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:"clamp(12px, 3vw, 20px)"}}>24-Hour Volume Trend</div>
             <MiniSparkline data={stage.spark} width={400} height={80} />
           </div>
 
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,marginBottom:16}}>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(140px, 1fr))',gap:"clamp(12px, 3vw, 20px)",marginBottom:"clamp(12px, 3vw, 20px)"}}>
             <div>
-              <div style={{fontSize:10,fontWeight:600,color:'#6b7685',marginBottom:4,textTransform:'uppercase'}}>Status</div>
+              <div style={{fontSize:"clamp(9px, 2vw, 10px)",fontWeight:600,color:'#6b7685',marginBottom:"clamp(8px, 2vw, 12px)",textTransform:'uppercase'}}>Status</div>
               <span className={`badge badge-${stage.status}`}>{stage.status.toUpperCase()}</span>
             </div>
             <div>
-              <div style={{fontSize:10,fontWeight:600,color:'#6b7685',marginBottom:4,textTransform:'uppercase'}}>Temperature</div>
+              <div style={{fontSize:10,fontWeight:600,color:'#6b7685',marginBottom:"clamp(12px, 3vw, 20px)",textTransform:'uppercase'}}>Temperature</div>
               <div style={{fontSize:14,fontWeight:700,color:'#1a2130'}}>
                 {stage.temperature ? `${stage.temperature}°C` : 'N/A'}
               </div>
             </div>
             <div>
-              <div style={{fontSize:10,fontWeight:600,color:'#6b7685',marginBottom:4,textTransform:'uppercase'}}>Officer in Charge</div>
+              <div style={{fontSize:10,fontWeight:600,color:'#6b7685',marginBottom:"clamp(12px, 3vw, 20px)",textTransform:'uppercase'}}>Officer in Charge</div>
               <div style={{fontSize:12,fontWeight:600,color:'#1a2130'}}>{stage.officer}</div>
             </div>
             <div>
-              <div style={{fontSize:10,fontWeight:600,color:'#6b7685',marginBottom:4,textTransform:'uppercase'}}>Last Inspection</div>
+              <div style={{fontSize:10,fontWeight:600,color:'#6b7685',marginBottom:"clamp(12px, 3vw, 20px)",textTransform:'uppercase'}}>Last Inspection</div>
               <div style={{fontSize:12,fontWeight:600,color:'#1a2130'}}>{stage.lastInspection}</div>
             </div>
           </div>
 
           <div>
-            <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:8,textTransform:'uppercase',letterSpacing:0.5}}>Description</div>
+            <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:"clamp(12px, 3vw, 20px)",textTransform:'uppercase',letterSpacing:0.5}}>Description</div>
             <div style={{fontSize:12,color:'#4a5568',lineHeight:1.6}}>{stage.description}</div>
           </div>
 
           {stage.anomalies.length > 0 && (
-            <div style={{marginTop:16,paddingTop:16,borderTop:'1px solid #d8dde3'}}>
-              <div style={{fontSize:11,fontWeight:700,color:'#F42A41',marginBottom:8,textTransform:'uppercase',letterSpacing:0.5}}>⚠ Active Anomalies</div>
+            <div style={{marginTop:"clamp(12px, 3vw, 20px)",paddingTop:16,borderTop:'1px solid #d8dde3'}}>
+              <div style={{fontSize:11,fontWeight:700,color:'#F42A41',marginBottom:"clamp(12px, 3vw, 20px)",textTransform:'uppercase',letterSpacing:0.5}}>⚠ Active Anomalies</div>
               {stage.anomalies.map((anom, i) => (
-                <div key={i} style={{fontSize:11,color:'#374151',padding:8,background:'#fff5f5',borderLeft:'3px solid #F42A41',marginBottom:6}}>
+                <div key={i} style={{fontSize:11,color:'#374151',padding:"clamp(12px, 3vw, 20px)",background:'#fff5f5',borderLeft:'3px solid #F42A41',marginBottom:"clamp(12px, 3vw, 20px)"}}>
                   {anom}
                 </div>
               ))}
@@ -108,7 +108,7 @@ export default function Pipeline() {
         </div>
       </div>
 
-      <div className="stat-grid" style={{marginBottom:20}}>
+      <div className="stat-grid" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         <div className="stat-card">
           <div className="stat-label">Total Daily Flow</div>
           <div className="stat-value">{Math.round(stages.reduce((s,v)=>s+v.volumeToday,0)/7).toLocaleString()}</div>
@@ -133,7 +133,7 @@ export default function Pipeline() {
         </div>
       </div>
 
-      <div className="card" style={{marginBottom:24}}>
+      <div className="card" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         <div className="card-header">
           <h3>7-Stage Pipeline Flow Diagram · পাইপলাইন প্রবাহ চিত্র</h3>
           <span className="bn">Click each stage for detailed analysis</span>
@@ -166,12 +166,12 @@ export default function Pipeline() {
         </div>
       </div>
 
-      <div style={{display:'grid',gridTemplateColumns:'1fr 300px',gap:20}}>
+      <div style={{display:'grid',gridTemplateColumns:'1fr',gap:"clamp(12px, 3vw, 20px)",maxWidth:'100%'}}>
         <div className="card">
           <div className="card-header">
             <h3>Stage Status Overview · স্তর স্থিতি সংক্ষিপ্ত</h3>
           </div>
-          <div className="card-body" style={{padding:0}}>
+          <div className="card-body" style={{padding:"clamp(12px, 3vw, 20px)"}}>
             <table className="gov-table">
               <thead>
                 <tr>
@@ -204,9 +204,9 @@ export default function Pipeline() {
             <div className="card-header">
               <h3>System Status · সিস্টেম স্থিতি</h3>
             </div>
-            <div className="card-body" style={{padding:'12px 16px'}}>
+            <div className="card-body" style={{padding:"clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)"}}>
               {stages.map(s => (
-                <div key={s.id} style={{display:'flex',alignItems:'center',gap:8,padding:'8px 0',borderBottom:'1px solid #f1f5f9',fontSize:11}}>
+                <div key={s.id} style={{display:'flex',alignItems:'center',gap:"clamp(12px, 3vw, 20px)",padding:'8px 0',borderBottom:'1px solid #f1f5f9',fontSize:11}}>
                   <div className={`stage-indicator ${s.status}`} style={{position:'static',flexShrink:0}} />
                   <div style={{flex:1}}>
                     <div style={{fontWeight:600,color:'#1a2130'}}>S{s.id}</div>

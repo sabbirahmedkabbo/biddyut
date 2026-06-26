@@ -8,11 +8,11 @@ const STATUSES = ['All','operational','warning','critical'];
 function StockBar({pct}) {
   const color = pct > 60 ? '#22c55e' : pct > 30 ? '#f59e0b' : '#F42A41';
   return (
-    <div style={{display:'flex',alignItems:'center',gap:6}}>
-      <div style={{width:60,background:'#e5e7eb',height:6,flexShrink:0}}>
+    <div style={{display:'flex',alignItems:'center',gap:"clamp(8px, 2vw, 12px)"}}>
+      <div style={{width:"clamp(50px, 15vw, 80px)",background:'#e5e7eb',height:6,flexShrink:0}}>
         <div style={{width:`${pct}%`,height:'100%',background:color}} />
       </div>
-      <span className={pct>60?'stock-high':pct>30?'stock-med':'stock-low'}>{pct}%</span>
+      <span className={pct>60?'stock-high':pct>30?'stock-med':'stock-low'} style={{fontSize:"clamp(10px, 2vw, 11px)"}}>{pct}%</span>
     </div>
   );
 }
@@ -33,27 +33,27 @@ function ExpandedRow({ station }) {
     <tr className="expanded">
       <td colSpan={9}>
         <div className="expanded-content">
-          <div style={{display:'grid',gridTemplateColumns:'200px 1fr 1fr',gap:20}}>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(150px, 1fr))',gap:"clamp(12px, 3vw, 20px)"}}>
             <div>
-              <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:8}}>7-Day Stock Trend</div>
+              <div style={{fontSize:"clamp(10px, 2vw, 11px)",fontWeight:700,color:'#006A4E',marginBottom:"clamp(12px, 3vw, 20px)"}}>7-Day Stock Trend</div>
               <MiniSparkline data={station.weeklyStock} color={station.stockPct>60?'#22c55e':station.stockPct>30?'#f59e0b':'#F42A41'} width={180} height={50} />
-              <div style={{fontSize:10,color:'#6b7685',marginTop:4}}>
+              <div style={{fontSize:10,color:'#6b7685',marginTop:"clamp(12px, 3vw, 20px)"}}>
                 {station.weeklyStock.map((v,i) => (
                   <span key={i} style={{marginRight:4,fontVariantNumeric:'tabular-nums'}}>{v}%</span>
                 ))}
               </div>
             </div>
             <div>
-              <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:8}}>Complaint Log</div>
+              <div style={{fontSize:"clamp(10px, 2vw, 11px)",fontWeight:700,color:'#006A4E',marginBottom:"clamp(12px, 3vw, 20px)"}}>Complaint Log</div>
               {complaints.map((c,i) => (
-                <div key={i} style={{fontSize:11,borderBottom:'1px solid #e5e7eb',paddingBottom:6,marginBottom:6}}>
+                <div key={i} style={{fontSize:"clamp(10px, 2vw, 11px)",borderBottom:'1px solid #e5e7eb',paddingBottom:6,marginBottom:"clamp(8px, 2vw, 12px)"}}>
                   <span style={{color:'#6b7685'}}>{c.date}</span> — {c.text}
-                  <span style={{marginLeft:8,fontSize:9,fontWeight:700,color:c.status==='Open'?'#F42A41':'#22c55e'}}>[{c.status}]</span>
+                  <span style={{marginLeft:"clamp(4px, 1vw, 8px)",fontSize:"clamp(8px, 1.5vw, 9px)",fontWeight:700,color:c.status==='Open'?'#F42A41':'#22c55e'}}>[{c.status}]</span>
                 </div>
               ))}
             </div>
             <div>
-              <div style={{fontSize:11,fontWeight:700,color:'#006A4E',marginBottom:8}}>Officer Contact</div>
+              <div style={{fontSize:"clamp(10px, 2vw, 11px)",fontWeight:700,color:'#006A4E',marginBottom:"clamp(12px, 3vw, 20px)"}}>Officer Contact</div>
               <div style={{fontSize:11,color:'#374151',lineHeight:2}}>
                 <div>Station ID: <b>{station.id}</b></div>
                 <div>Lat/Lng: {station.lat}, {station.lng}</div>
@@ -142,7 +142,7 @@ export default function Stations() {
         <div className="page-header-meta">50 stations monitored · 8 divisions</div>
       </div>
 
-      <div className="stat-grid" style={{marginBottom:20}}>
+      <div className="stat-grid" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         <div className="stat-card"><div className="stat-label">Operational</div><div className="stat-value">{counts.op}</div><div className="stat-meta">Normal operations</div></div>
         <div className="stat-card warning"><div className="stat-label">Warning</div><div className="stat-value warning">{counts.warn}</div><div className="stat-meta">Stock or compliance issues</div></div>
         <div className="stat-card critical"><div className="stat-label">Critical</div><div className="stat-value critical">{counts.crit}</div><div className="stat-meta">Immediate intervention needed</div></div>
@@ -155,7 +155,7 @@ export default function Stations() {
           placeholder="Search by name, ID, or district…"
           value={search}
           onChange={e=>setSearch(e.target.value)}
-          style={{minWidth:240}}
+          style={{minWidth:"clamp(150px, 30vw, 240px)"}}
         />
         <select className="filter-select" value={divFilter} onChange={e=>setDivFilter(e.target.value)}>
           {DIVISIONS.map(d=><option key={d}>{d}</option>)}
@@ -170,7 +170,7 @@ export default function Stations() {
       </div>
 
       <div className="card">
-        <div className="card-body" style={{padding:0,overflowX:'auto'}}>
+        <div className="card-body" style={{padding:"clamp(12px, 3vw, 20px)",overflowX:'auto'}}>
           <table className="gov-table">
             <thead>
               <tr>
@@ -195,7 +195,7 @@ export default function Stations() {
                     className={expanded===s.id?'expanded':''}
                   >
                     <td style={{fontWeight:700,color:'#006A4E',fontVariantNumeric:'tabular-nums'}}>{s.id}</td>
-                    <td style={{fontWeight:600,maxWidth:180}}>{s.name}</td>
+                    <td style={{fontWeight:600,maxWidth:"clamp(120px, 30vw, 200px)"}}>{s.name}</td>
                     <td>{s.division}</td>
                     <td>{s.district}</td>
                     <td><span className={`badge badge-${s.status}`}>{s.status.toUpperCase()}</span></td>

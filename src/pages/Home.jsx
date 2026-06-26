@@ -60,7 +60,7 @@ export default function Home() {
       <LiveTicker />
 
       <div className="status-strip">
-        <span style={{fontSize:10,color:'rgba(255,255,255,0.5)',fontWeight:700,marginRight:8}}>PIPELINE STATUS:</span>
+        <span style={{fontSize:"clamp(10px, 2vw, 12px)",color:'rgba(255,255,255,0.5)',fontWeight:700,marginRight:"clamp(4px, 2vw, 8px)"}}>PIPELINE STATUS:</span>
         {PIPELINE_STAGES.map(s => (
           <div key={s.id} className="status-strip-item">
             <div className={`status-dot ${s.status==='operational'?'ok':s.status==='warning'?'warn':'crit'}`} />
@@ -157,7 +157,7 @@ export default function Home() {
             <div className="live-feed-header">
               <div className="live-dot" />
               <h3>LIVE FEED — জ্বালানি ঘটনা প্রবাহ</h3>
-              <span style={{marginLeft:'auto',fontSize:10}}>Auto-updates every 3s</span>
+              <span style={{marginLeft:'auto',fontSize:"clamp(10px, 2vw, 11px)"}}>Auto-updates every 3s</span>
             </div>
             <div className="feed-list">
               {feed.map((item, i) => (
@@ -170,14 +170,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div style={{display:'flex',flexDirection:'column',gap:16}}>
+        <div style={{display:'flex',flexDirection:'column',gap:"clamp(12px, 3vw, 20px)"}}>
           <div className="card">
             <div className="card-header">
               <h3>Pipeline Stage Status · পাইপলাইন স্তর</h3>
             </div>
             <div className="card-body" style={{padding:'8px 0'}}>
               {PIPELINE_STAGES.map(s => (
-                <div key={s.id} style={{display:'flex',alignItems:'center',padding:'7px 16px',borderBottom:'1px solid #f1f5f9',gap:10}}>
+                <div key={s.id} style={{display:'flex',alignItems:'center',padding:'7px 16px',borderBottom:'1px solid #f1f5f9',gap:"clamp(12px, 3vw, 20px)"}}>
                   <div className={`stage-indicator ${s.status}`} style={{position:'static',flexShrink:0}} />
                   <div style={{flex:1}}>
                     <div style={{fontSize:11,fontWeight:700,color:'#1a2130'}}>S{s.id} · {s.name}</div>
@@ -198,10 +198,10 @@ export default function Home() {
             </div>
             <div className="card-body" style={{padding:'8px 16px'}}>
               {ALERT_POOL.filter(a=>a.severity==='Critical').slice(0,4).map(a => (
-                <div key={a.id} style={{borderLeft:'3px solid #F42A41',paddingLeft:10,marginBottom:10}}>
+                <div key={a.id} style={{borderLeft:'3px solid #F42A41',paddingLeft:10,marginBottom:"clamp(12px, 3vw, 20px)"}}>
                   <div style={{fontSize:10,fontWeight:700,color:'#991b1b'}}>{a.id} · {a.time}</div>
-                  <div style={{fontSize:11,color:'#374151',marginTop:2}}>{a.description.substring(0,100)}…</div>
-                  <div style={{fontSize:10,color:'#6b7685',marginTop:2}}>{a.location}</div>
+                  <div style={{fontSize:11,color:'#374151',marginTop:"clamp(12px, 3vw, 20px)"}}>{a.description.substring(0,100)}…</div>
+                  <div style={{fontSize:10,color:'#6b7685',marginTop:"clamp(12px, 3vw, 20px)"}}>{a.location}</div>
                 </div>
               ))}
               <Link to="/alerts" style={{fontSize:11,color:'#006A4E',fontWeight:600,textDecoration:'none'}}>View all alerts →</Link>
@@ -214,7 +214,7 @@ export default function Home() {
         <div className="card">
           <div className="card-header">
             <h3>National Station Network Map · জাতীয় স্টেশন মানচিত্র</h3>
-            <span className="bn" style={{fontSize:10,color:'rgba(255,255,255,0.6)'}}>50 monitored stations shown · সকল বিভাগ</span>
+            <span className="bn" style={{fontSize:"clamp(9px, 2vw, 10px)",color:'rgba(255,255,255,0.6)'}}>50 monitored stations shown · সকল বিভাগ</span>
           </div>
           <div className="map-container">
             <MapContainer center={[23.685, 90.356]} zoom={7} style={{height:'100%',width:'100%'}}>
@@ -241,11 +241,11 @@ export default function Home() {
               ))}
             </MapContainer>
           </div>
-          <div style={{padding:'8px 16px',background:'#f8f9fb',borderTop:'1px solid #e5e7eb',fontSize:10,color:'#6b7685',display:'flex',gap:20}}>
+          <div style={{padding:"clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)",background:'#f8f9fb',borderTop:'1px solid #e5e7eb',fontSize:"clamp(9px, 2vw, 10px)",color:'#6b7685',display:'flex',flexWrap:'wrap',gap:"clamp(8px, 2vw, 12px)"}}>
             <span><span style={{color:'#22c55e',fontWeight:700}}>●</span> Operational</span>
             <span><span style={{color:'#f59e0b',fontWeight:700}}>●</span> Warning</span>
             <span><span style={{color:'#F42A41',fontWeight:700}}>●</span> Critical</span>
-            <span style={{marginLeft:'auto'}}>Data: BPC/BERC Station Registry · Updated: {new Date().toLocaleTimeString()}</span>
+            <span style={{marginLeft:'auto',minWidth:'100%',textAlign:'right'}}>Data: BPC/BERC Station Registry · Updated: {new Date().toLocaleTimeString()}</span>
           </div>
         </div>
       </div>

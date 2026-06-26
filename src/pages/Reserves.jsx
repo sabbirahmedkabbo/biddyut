@@ -25,15 +25,15 @@ function CircularGauge({ fuel, data }) {
   };
 
   return (
-    <div className="gauge-card card" style={{padding:16}}>
+    <div className="gauge-card card" style={{padding:"clamp(12px, 3vw, 20px)"}}>
       <div className="gauge-label">{FUEL_NAMES[fuel]}</div>
-      <div style={{fontFamily:'var(--font-bn)',fontSize:10,color:'#6b7685',marginBottom:8}}>{FUEL_BN[fuel]}</div>
-      <div style={{position:'relative',width:120,margin:'0 auto'}}>
+      <div style={{fontFamily:'var(--font-bn)',fontSize:"clamp(9px, 2vw, 10px)",color:'#6b7685',marginBottom:"clamp(12px, 3vw, 20px)"}}>{FUEL_BN[fuel]}</div>
+      <div style={{position:'relative',width:"clamp(100px, 20vw, 140px)",margin:'0 auto'}}>
         <Doughnut data={doughnutData} options={{
           cutout:'72%',
           plugins:{legend:{display:false},tooltip:{enabled:false}},
           animation:{duration:600},
-        }} height={120} />
+        }} height={"clamp(100, 20vw, 140)"} />
         <div style={{
           position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%)',
           textAlign:'center',
@@ -44,21 +44,21 @@ function CircularGauge({ fuel, data }) {
           <div className="gauge-sub">days</div>
         </div>
       </div>
-      <div style={{marginTop:8,fontSize:11,textAlign:'center'}}>
+      <div style={{marginTop:"clamp(12px, 3vw, 20px)",fontSize:"clamp(10px, 2vw, 11px)",textAlign:'center'}}>
         <div style={{color:'#6b7685'}}>{data.currentMT.toLocaleString()} MT</div>
-        <div style={{fontSize:10,color:'#9ca3af'}}>of {data.capacityMT.toLocaleString()} MT capacity</div>
-        {isCrit && <div style={{color:'#F42A41',fontWeight:700,marginTop:4,fontSize:11}}>⚠ CRITICAL — Below 15 days</div>}
-        {!isCrit && isWarn && <div style={{color:'#f59e0b',fontWeight:700,marginTop:4,fontSize:11}}>⚡ WARNING</div>}
+        <div style={{fontSize:"clamp(9px, 1.5vw, 10px)",color:'#9ca3af'}}>of {data.capacityMT.toLocaleString()} MT capacity</div>
+        {isCrit && <div style={{color:'#F42A41',fontWeight:700,marginTop:"clamp(12px, 3vw, 20px)",fontSize:"clamp(10px, 2vw, 11px)"}}>⚠ CRITICAL — Below 15 days</div>}
+        {!isCrit && isWarn && <div style={{color:'#f59e0b',fontWeight:700,marginTop:"clamp(12px, 3vw, 20px)",fontSize:"clamp(10px, 2vw, 11px)"}}>⚡ WARNING</div>}
       </div>
-      <div style={{marginTop:6}}>
-        <div style={{display:'flex',justifyContent:'space-between',fontSize:9,color:'#9ca3af',marginBottom:2}}>
+      <div style={{marginTop:"clamp(12px, 3vw, 20px)"}}>
+        <div style={{display:'flex',justifyContent:'space-between',fontSize:"clamp(8px, 1.5vw, 9px)",color:'#9ca3af',marginBottom:"clamp(8px, 2vw, 12px)"}}>
           <span>0</span><span>Target: {data.targetDays}d</span>
         </div>
         <div style={{background:'#e5e7eb',height:4,position:'relative'}}>
           <div style={{width:`${Math.min(pct,100)}%`,height:'100%',background:color,transition:'width 0.5s'}} />
           <div style={{position:'absolute',left:`${(data.criticalDays/data.targetDays)*100}%`,top:-2,bottom:-2,width:2,background:'#F42A41'}} />
         </div>
-        <div style={{fontSize:9,color:'#6b7685',marginTop:2}}>Red line = critical threshold ({data.criticalDays} days)</div>
+        <div style={{fontSize:"clamp(8px, 1.5vw, 9px)",color:'#6b7685',marginTop:"clamp(8px, 2vw, 12px)"}}>Red line = critical threshold ({data.criticalDays} days)</div>
       </div>
     </div>
   );
@@ -144,41 +144,41 @@ export default function Reserves() {
         </div>
       </div>
 
-      <div className="card" style={{marginBottom:24,background:'#006A4E',border:'none'}}>
-        <div style={{padding:'20px 24px',display:'flex',alignItems:'center',gap:32}}>
+      <div className="card" style={{marginBottom:"clamp(12px, 3vw, 20px)",background:'#006A4E',border:'none'}}>
+        <div style={{padding:"clamp(12px, 3vw, 20px) clamp(16px, 4vw, 24px)",display:'flex',flexDirection:'column',gap:"clamp(12px, 3vw, 20px)",alignItems:'stretch'}}>
           <div>
-            <div style={{fontSize:11,fontWeight:700,color:'rgba(255,255,255,0.6)',textTransform:'uppercase',letterSpacing:1}}>Reserve Adequacy Index · মজুদ পর্যাপ্ততা সূচক</div>
-            <div style={{fontSize:56,fontWeight:900,color:'white',lineHeight:1}}>{RESERVE_ADEQUACY_INDEX}</div>
-            <div style={{fontSize:14,color:'rgba(255,255,255,0.7)'}}>/100 composite score</div>
+            <div style={{fontSize:"clamp(10px, 2vw, 11px)",fontWeight:700,color:'rgba(255,255,255,0.6)',textTransform:'uppercase',letterSpacing:1}}>Reserve Adequacy Index · মজুদ পর্যাপ্ততা সূচক</div>
+            <div style={{fontSize:"clamp(36px, 10vw, 56px)",fontWeight:900,color:'white',lineHeight:1}}>{RESERVE_ADEQUACY_INDEX}</div>
+            <div style={{fontSize:"clamp(12px, 3vw, 14px)",color:'rgba(255,255,255,0.7)'}}>/100 composite score</div>
           </div>
           <div style={{flex:1}}>
             <div style={{background:'rgba(255,255,255,0.15)',height:24,borderRadius:0,overflow:'hidden',position:'relative'}}>
               <div style={{width:`${RESERVE_ADEQUACY_INDEX}%`,height:'100%',background:adequacyColor,transition:'width 0.5s'}} />
               <div style={{position:'absolute',left:'66%',top:0,bottom:0,width:2,background:'rgba(255,255,255,0.4)'}} />
             </div>
-            <div style={{display:'flex',justifyContent:'space-between',fontSize:10,color:'rgba(255,255,255,0.5)',marginTop:4}}>
+            <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-between',fontSize:"clamp(9px, 1.5vw, 10px)",color:'rgba(255,255,255,0.5)',marginTop:"clamp(8px, 2vw, 12px)"}}>
               <span>0 — Critical</span>
               <span>66 — Adequate</span>
               <span>100 — Optimal</span>
             </div>
           </div>
-          <div style={{textAlign:'right'}}>
-            <div style={{fontSize:11,color:'rgba(255,255,255,0.6)'}}>Avg Reserve Days</div>
-            <div style={{fontSize:36,fontWeight:900,color:'#fbbf24'}}>{totalDays.toFixed(1)}</div>
-            <div style={{fontSize:11,color:'rgba(255,255,255,0.6)'}}>days across all fuels</div>
+          <div style={{textAlign:'center'}}>
+            <div style={{fontSize:"clamp(10px, 2vw, 11px)",color:'rgba(255,255,255,0.6)'}}>Avg Reserve Days</div>
+            <div style={{fontSize:"clamp(28px, 8vw, 36px)",fontWeight:900,color:'#fbbf24'}}>{totalDays.toFixed(1)}</div>
+            <div style={{fontSize:"clamp(10px, 2vw, 11px)",color:'rgba(255,255,255,0.6)'}}>days across all fuels</div>
           </div>
         </div>
       </div>
 
-      <div className="gauge-grid" style={{marginBottom:24}}>
+      <div className="gauge-grid" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         {Object.entries(reserves).map(([fuel, data]) => (
           <CircularGauge key={fuel} fuel={fuel} data={data} />
         ))}
       </div>
 
-      <div className="card" style={{marginBottom:24}}>
+      <div className="card" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         <div className="card-header"><h3>Days of Reserve — Critical Threshold View</h3></div>
-        <div className="card-body" style={{padding:0}}>
+        <div className="card-body" style={{padding:"clamp(12px, 3vw, 20px)"}}>
           <table className="gov-table">
             <thead>
               <tr>
@@ -200,7 +200,7 @@ export default function Reserves() {
                 return (
                   <tr key={fuel}>
                     <td>
-                      <div style={{display:'flex',alignItems:'center',gap:8}}>
+                      <div style={{display:'flex',alignItems:'center',gap:"clamp(12px, 3vw, 20px)"}}>
                         <div style={{width:12,height:12,background:FUEL_COLORS[fuel],flexShrink:0}} />
                         <div>
                           <div style={{fontWeight:700}}>{FUEL_NAMES[fuel]}</div>
@@ -239,7 +239,7 @@ export default function Reserves() {
         </div>
       </div>
 
-      <div className="chart-grid" style={{marginBottom:24}}>
+      <div className="chart-grid" style={{marginBottom:"clamp(12px, 3vw, 20px)"}}>
         <div className="card">
           <div className="card-header">
             <h3>6-Month Reserve History (Days)</h3>
@@ -247,7 +247,7 @@ export default function Reserves() {
           </div>
           <div className="card-body">
             <Line data={historyChart} options={chartOpts} height={220} />
-            <div style={{marginTop:8,padding:8,background:'#fff7ed',border:'1px solid #fed7aa',fontSize:11,color:'#9a3412'}}>
+            <div style={{marginTop:"clamp(12px, 3vw, 20px)",padding:"clamp(12px, 3vw, 20px)",background:'#fff7ed',border:'1px solid #fed7aa',fontSize:11,color:'#9a3412'}}>
               ⚠ Note: LNG and Furnace Oil reserves have declined consistently over 6 months. Procurement action required.
             </div>
           </div>
@@ -260,13 +260,13 @@ export default function Reserves() {
           </div>
           <div className="card-body">
             <Line data={forecastChart} options={chartOpts} height={220} />
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:8,marginTop:12}}>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(120px, 1fr))',gap:"clamp(12px, 3vw, 20px)",marginTop:"clamp(12px, 3vw, 20px)"}}>
               {DEMAND_FORECAST.filter(d=>[2026,2030,2041,2050].includes(d.year)).map(d => (
                 <div key={d.year} className="forecast-milestone">
-                  <div className="forecast-year">{d.year}</div>
-                  <div className="forecast-val">{d.vecm}</div>
-                  <div className="forecast-unit">MTOE (VECM)</div>
-                  {d.iepmp && <div style={{fontSize:11,color:'#F42A41',marginTop:4}}>{d.iepmp} IEPMP</div>}
+                  <div className="forecast-year" style={{fontSize:"clamp(12px, 2.5vw, 14px)"}}>{d.year}</div>
+                  <div className="forecast-val" style={{fontSize:"clamp(16px, 4vw, 20px)"}}>{d.vecm}</div>
+                  <div className="forecast-unit" style={{fontSize:"clamp(9px, 1.5vw, 10px)"}}>MTOE (VECM)</div>
+                  {d.iepmp && <div style={{fontSize:"clamp(10px, 2vw, 11px)",color:'#F42A41',marginTop:"clamp(8px, 2vw, 12px)"}}>{d.iepmp} IEPMP</div>}
                 </div>
               ))}
             </div>
