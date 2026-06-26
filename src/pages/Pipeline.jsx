@@ -186,12 +186,12 @@ export default function Pipeline() {
               <tbody>
                 {stages.map(s => (
                   <tr key={s.id} onClick={() => setSelectedStage(s)} style={{cursor:'pointer'}}>
-                    <td style={{fontWeight:700,color:'#006A4E'}}>S{s.id}</td>
-                    <td><div style={{fontWeight:600}}>{s.name}</div><div style={{fontSize:10,color:'#6b7685',fontFamily:'var(--font-bn)'}}>{s.nameBn}</div></td>
-                    <td style={{fontVariantNumeric:'tabular-nums'}}>{s.volumeToday.toLocaleString()} {s.unit}</td>
-                    <td style={{fontVariantNumeric:'tabular-nums'}}>{s.flowRate.toLocaleString()} MT/h</td>
-                    <td><span className={`badge badge-${s.status}`}>{s.status}</span></td>
-                    <td style={{textAlign:'center'}}>{s.anomalies.length > 0 ? <span style={{color:'#F42A41',fontWeight:700}}>⚠ {s.anomalies.length}</span> : '—'}</td>
+                    <td data-label="Stage" style={{fontWeight:700,color:'#006A4E'}}>S{s.id}</td>
+                    <td data-label="Name"><div style={{fontWeight:600}}>{s.name}</div><div style={{fontSize:10,color:'#6b7685',fontFamily:'var(--font-bn)'}}>{s.nameBn}</div></td>
+                    <td data-label="Volume" style={{fontVariantNumeric:'tabular-nums'}}>{s.volumeToday.toLocaleString()} {s.unit}</td>
+                    <td data-label="Flow Rate" style={{fontVariantNumeric:'tabular-nums'}}>{s.flowRate.toLocaleString()} MT/h</td>
+                    <td data-label="Status"><span className={`badge badge-${s.status}`}>{s.status}</span></td>
+                    <td data-label="Anomalies" style={{textAlign:'center'}}>{s.anomalies.length > 0 ? <span style={{color:'#F42A41',fontWeight:700}}>⚠ {s.anomalies.length}</span> : '—'}</td>
                   </tr>
                 ))}
               </tbody>

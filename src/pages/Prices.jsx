@@ -257,15 +257,15 @@ export default function Prices() {
             <tbody>
               {COUNTRY_COMPARISON.map(c => (
                 <tr key={c.country} style={c.country==='Bangladesh'?{background:'#e8f5f0'}:{}}>
-                  <td style={{fontWeight:c.country==='Bangladesh'?700:400,color:c.country==='Bangladesh'?'#006A4E':'inherit'}}>
+                  <td data-label="Country" style={{fontWeight:c.country==='Bangladesh'?700:400,color:c.country==='Bangladesh'?'#006A4E':'inherit'}}>
                     {c.country==='Bangladesh'?'🇧🇩 ':c.country==='India'?'🇮🇳 ':c.country==='Pakistan'?'🇵🇰 ':'🇱🇰 '}
                     {c.country}
                   </td>
-                  <td>${c.crudeOil.toFixed(2)}</td>
-                  <td style={{fontWeight:700,color:c.lng>PRICE_SHOCK_THRESHOLD?'#F42A41':'inherit'}}>${c.lng.toFixed(2)}</td>
-                  <td>${c.diesel.toFixed(2)}</td>
-                  <td>${c.petrol.toFixed(2)}</td>
-                  <td>
+                  <td data-label="Crude Oil ($/barrel)">${c.crudeOil.toFixed(2)}</td>
+                  <td data-label="LNG ($/MMBtu)" style={{fontWeight:700,color:c.lng>PRICE_SHOCK_THRESHOLD?'#F42A41':'inherit'}}>${c.lng.toFixed(2)}</td>
+                  <td data-label="Diesel ($/MT)">${c.diesel.toFixed(2)}</td>
+                  <td data-label="Petrol ($/MT)">${c.petrol.toFixed(2)}</td>
+                  <td data-label="LNG vs Bangladesh">
                     {c.country==='Bangladesh'
                       ? <span style={{color:'#006A4E',fontWeight:700}}>Baseline</span>
                       : c.lng > COUNTRY_COMPARISON[0].lng

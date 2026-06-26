@@ -194,15 +194,15 @@ export default function Stations() {
                     style={{cursor:'pointer'}}
                     className={expanded===s.id?'expanded':''}
                   >
-                    <td style={{fontWeight:700,color:'#006A4E',fontVariantNumeric:'tabular-nums'}}>{s.id}</td>
-                    <td style={{fontWeight:600,maxWidth:"clamp(120px, 30vw, 200px)"}}>{s.name}</td>
-                    <td>{s.division}</td>
-                    <td>{s.district}</td>
-                    <td><span className={`badge badge-${s.status}`}>{s.status.toUpperCase()}</span></td>
-                    <td><StockBar pct={Math.round(s.stockPct)} /></td>
-                    <td style={{fontSize:11,fontVariantNumeric:'tabular-nums'}}>{s.lastSupply}</td>
-                    <td><HoardingScore score={s.hoardingScore} /></td>
-                    <td>{s.anomalyFlag?<span style={{color:'#F42A41',fontWeight:700}}>⚠ YES</span>:<span style={{color:'#22c55e'}}>✓ No</span>}</td>
+                    <td data-label="Station ID" style={{fontWeight:700,color:'#006A4E',fontVariantNumeric:'tabular-nums'}}>{s.id}</td>
+                    <td data-label="Name" style={{fontWeight:600}}>{s.name}</td>
+                    <td data-label="Division">{s.division}</td>
+                    <td data-label="District">{s.district}</td>
+                    <td data-label="Status"><span className={`badge badge-${s.status}`}>{s.status.toUpperCase()}</span></td>
+                    <td data-label="Stock Level"><StockBar pct={Math.round(s.stockPct)} /></td>
+                    <td data-label="Last Supply" style={{fontSize:11,fontVariantNumeric:'tabular-nums'}}>{s.lastSupply}</td>
+                    <td data-label="Hoarding Risk"><HoardingScore score={s.hoardingScore} /></td>
+                    <td data-label="Anomaly">{s.anomalyFlag?<span style={{color:'#F42A41',fontWeight:700}}>⚠ YES</span>:<span style={{color:'#22c55e'}}>✓ No</span>}</td>
                   </tr>
                   {expanded === s.id && <ExpandedRow key={`exp-${s.id}`} station={s} />}
                 </>
